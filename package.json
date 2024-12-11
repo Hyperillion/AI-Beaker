@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@huggingface/transformers": "^3.0.2",
+    "express": "^4.21.1",
+    "layui": "^2.9.20",
+    "socket.io": "^4.8.1"
+  }
+}

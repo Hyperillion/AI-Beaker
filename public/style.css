@@ -1,0 +1,173 @@
+body,
+p {
+    margin: 0;
+    /* //no scroll bar  */
+    overflow: hidden;
+}
+
+
+/* Style headings */
+h1 {
+    font-size: 1.5rem;
+    color: #16baaa;
+    margin: 10px;
+}
+
+/* Style paragraphs */
+p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+section{
+    margin: 20px 0;
+    left: 3%;
+}
+
+
+.p5sketch {
+    margin: 0;
+    padding: 0;
+}
+
+.cameraSelect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.inputBox {
+    position: absolute;
+    width: 90vw;
+    bottom: 15%;
+    left: 5%;
+    z-index: 1;
+}
+
+.layui-input-group {
+    width: 100%;
+}
+
+.inputBox .layui-input-group .layui-input-split {
+    width: 30vw;
+}
+
+.contain-box-sub{
+    /* position: absolute; */
+    width: 100%;
+    top: 60%;
+    left: 0;
+    z-index: 1;
+}
+
+#titleText {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    white-space: nowrap;
+    font-size: 50px;
+    z-index: 1;
+}
+
+#recognition-button {
+    position: absolute;
+    width: 90%;
+    height: 10vh;
+    bottom: 3%;
+    left: 2.5%;
+    z-index: 1;
+    font-size: 30px;
+}
+
+#send-button {
+    position: absolute;
+    top: 95%;
+    left: 35%;
+    z-index: 1;
+}
+
+#mix-button {
+    display: none;
+    position: absolute;
+    top: 95%;
+    left: 68%;
+    z-index: 1;
+}
+
+#go-button{
+    position: absolute;
+    width: 90vw;
+    height: 10vh;
+    top: 85%;
+    left: 5%;
+    z-index: 1;
+    font-size: 30px;
+}
+
+#image-container{
+    width: 90vw;
+}
+
+#comfy-image{
+    width: 100%;
+}
+
+#testData{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: -99;
+    display: none;
+}
+
+#loadingBG{
+    display: none;
+    position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #000000bb;
+	z-index: 99999;
+}
+
+#loadingBar {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* width: 100%; */
+	z-index: 999999;
+}
+
+#loadingText {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    color: white;
+    width: 90%;
+    z-index: 999999;
+    text-align: center;
+}
+
+#openaiResult{
+    margin: 10px;
+}
+
+#mamual{
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    z-index: 1;
+}
+/* #contain-table {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+} */

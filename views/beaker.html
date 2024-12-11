@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Test Tube Crafter</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.min.js"></script>
+  <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+  <script src="matter.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@2.9.2/dist/css/layui.css">
+  <link href="layui-theme-dark.css" rel="stylesheet">
+  <script src="//unpkg.com/layui@2.9.20/dist/layui.js"></script>
+</head>
+
+<body>
+  <div id="loadingBG">
+    <img id="loadingBar" src="loading-bars.svg" alt="Loading icon" />
+    <p id="loadingText">Waiting For Reaction</p>
+  </div>
+
+  <div>
+    <div id="p5sketch"></div>
+  </div>
+  <div>
+    <button class="layui-btn cameraSelect">
+      <span>Choose Your Camera</span>
+      <i class="layui-icon layui-icon-down layui-font-12"></i>
+    </button>
+
+    <button type="button" class="layui-btn" id="recognition-button">Add to Beaver!</button>
+    <!-- <button type="button" class="layui-btn" id="send-button">Send All</button> -->
+    <button type="button" class="layui-btn" id="mix-button">Mix All</button>
+  </div>
+
+  <div id="testData">
+    <button type="button" class="layui-btn layui-btn-primary" id="popup-images" lay-on="image-generated">捕获层</button>
+    <!-- <h1 id="titleText">AI Beaker</h1> -->
+
+    <p id="username">Username:</p>
+    <p id="partycode">PartyCode:</p>
+    <p id="currentRecognition">Nothing</p>
+    <div id="image-container">
+      <p id="openaiResult">Nothing</p>
+      <img id="comfy-image" src="" alt="Comfy Generated Images" />
+    </div>
+  </div>
+  <!-- <script defer src="functions.js"></script> -->
+  <script defer src="comfyui-p5-helper.js"></script>
+  <script defer src="openai.js"></script>
+  <script defer src="sketch.js"></script>
+  <script defer src="beaker.js"></script>
+</body>
+
+</html>

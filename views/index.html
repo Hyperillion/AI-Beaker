@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Test Tube Crafter</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.min.js"></script>
+  <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+  <script src="matter.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@2.9.2/dist/css/layui.css">
+  <link href="layui-theme-dark.css" rel="stylesheet">
+  <script src="//unpkg.com/layui@2.9.20/dist/layui.js"></script>
+</head>
+
+<body>
+
+  <div>
+    <div id="p5sketch"></div>
+  </div>
+  <div>
+    <button class="layui-btn cameraSelect">
+      <span>Choose Your Camera</span>
+      <i class="layui-icon layui-icon-down layui-font-12"></i>
+    </button>
+
+    <div id="mamual">
+      <section>
+        <h1>📸 Scan It!</h1>
+        <h3><strong>Discover the World Around You</strong></h3>
+        <p>Use your phone to scan any object nearby. It will be put in your virtual beaker!</p>
+    </section>
+
+    <section>
+        <h1>🎲 Shake It!</h1>
+        <h3><strong>Mix It Up</strong></h3>
+        <p>Shake your phone to combine everything in your beaker.  See what unique results your creation can bring!</p>
+    </section>
+
+    <section>
+        <h1>🌊 Pour It!</h1>
+        <h3><strong>Share the Fun</strong></h3>
+        <p>Tilt your phone to pour your creation into your friend’s beaker. Make sure you’re both using the same Lab Number to connect and share!</p>
+    </section>
+
+    </div>
+    <div class="inputBox">
+
+      <div class="layui-form-item">
+        <div class="layui-input-group">
+          <div class="layui-input-split layui-input-prefix">
+            Experimenter
+          </div>
+          <input type="text" placeholder="Input Your User Name Here" lay-affix="clear" class="layui-input" id="username"
+            style="width: 100%;">
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <div class="layui-input-group">
+          <div class="layui-input-split layui-input-prefix">
+            Lab Number
+          </div>
+          <input type="text" placeholder="Input Your Pairing Code Here" lay-affix="clear" class="layui-input"
+            id="partycode" style="width: 100%;">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="layui-btn" id="go-button">Let's go</button>
+    <h1 id="titleText">AI Beaker</h1>
+  </div>
+
+  <script defer src="index.js"></script>
+</body>
+
+</html>
