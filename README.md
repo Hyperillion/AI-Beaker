@@ -35,7 +35,10 @@ Follow these instructions to set up and run Infinite Crafter on your local machi
 ---
 
 ### Running the Project 
- 
+
+Before you run the project, you should replace the SSL certificate with your own one. Also please replace the ComfyUI link and OpenAI API link
+
+
 1. Start the server:
 
 ```bash
