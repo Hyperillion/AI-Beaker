@@ -12,9 +12,9 @@ class ComfyUiP5Helper {
     this.ws = new WebSocket(this.base_url + "/ws");
     this.ws.addEventListener("message", this.websocket_on_message.bind(this));
 
-    this.ws.onopen = () => {
-      console.log("WebSocket is open now.");
-    };
+    // this.ws.onopen = () => {
+    //   console.log("WebSocket is open now.");
+    // };
     this.ws.onclose = () => {
       console.log("WebSocket is closed now.");
       setTimeout(() => {
@@ -24,10 +24,8 @@ class ComfyUiP5Helper {
   };
 
   websocket_on_message(event) {
-    console.log(event);
     if (typeof event.data == "string") {
       const data = JSON.parse(event.data);
-      console.log(data.type);
       if (data.type == "status") {
         // ComfyUI sends the client id (once) after establishing the connection
         if (data.data.sid && !this.sid) {
@@ -90,7 +88,7 @@ class ComfyUiP5Helper {
   async run(workflow, callback) {
     this.replace_saveimage_with_websocket(workflow);
     this.callback = callback;
-    console.log(workflow);
+    // console.log(workflow);
     this.prompt_id = await this.prompt(workflow);
     return new Promise((resolve, reject) => {
       this.resolve = resolve;

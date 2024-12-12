@@ -295,22 +295,17 @@ function gotResultClassifier(results) {
 
 //openAI send and receive
 function sendOpenAIRequest(prompt) {
-    console.log("OpenAI request received:" + prompt);
     openai_api_params.messages[0].content = prompt;
     requestOAI("POST", "/v1/chat/completions", openai_api_params, gotResultOpenAI);
     console.log("openai request sent!");
 }
 
 async function gotResultOpenAI(results) {
-    console.log("openai result received!");
     opennai_lock = false;
     openai_result = results.choices[0].message.content.split(";");
     //sperate the word and sentence
     document.getElementById("openaiResult").innerHTML = openai_result[1];
     console.log(openai_result);
-    // containObjectList[0][0] = openai_result[0];
-    // boxes.push(new ContainBox(openai_result[0]));
-    updateTable();
     await requestImageComfy(openai_result[1]);
     return results;
 }
@@ -321,7 +316,6 @@ async function requestImageComfy(prompt) {
     workflow[6].inputs.text = prompt;
     workflow[3].inputs.seed = Math.floor(Math.random() * 1000000);
     const test = await comfy.run(workflow, gotImageComfy);
-    console.log(test);
     console.log("comfy request sent!");
 }
 
