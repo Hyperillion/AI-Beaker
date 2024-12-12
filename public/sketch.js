@@ -99,7 +99,7 @@ function setup() {
     engine = Engine.create();
     world = engine.world;
 
-    ground = Bodies.rectangle(width / 2, videoHeight + videoPTy + 10, width, 20, { isStatic: true });
+    ground = Bodies.rectangle(width / 2, videoHeight + videoPTy + 20, width, 40, { isStatic: true });
     leftWall = Bodies.rectangle(videoPTx - 10, height / 2, 20, height, { isStatic: true });
     rightWall = Bodies.rectangle(videoPTx + videoWidth, height / 2, 20, height, { isStatic: true });
     // Add the box to the world
@@ -301,7 +301,8 @@ function sendOpenAIRequest(prompt) {
     console.log("openai request sent!");
 }
 
-function gotResultOpenAI(results) {
+async function gotResultOpenAI(results) {
+    console.log("openai result received!");
     opennai_lock = false;
     openai_result = results.choices[0].message.content.split(";");
     //sperate the word and sentence
@@ -310,19 +311,21 @@ function gotResultOpenAI(results) {
     // containObjectList[0][0] = openai_result[0];
     // boxes.push(new ContainBox(openai_result[0]));
     updateTable();
-    requestImageComfy(openai_result[1]);
+    await requestImageComfy(openai_result[1]);
+    return results;
 }
 
 //comfyUI send and receive
-function requestImageComfy(prompt) {
+async function requestImageComfy(prompt) {
     // replace the prompt
     workflow[6].inputs.text = prompt;
     workflow[3].inputs.seed = Math.floor(Math.random() * 1000000);
-    comfy.run(workflow, gotImageComfy);
+    const test = await comfy.run(workflow, gotImageComfy);
+    console.log(test);
     console.log("comfy request sent!");
 }
 
-function gotImageComfy(data, err) {
+async function gotImageComfy(data, err) {
     // data is an array of outputs from running the workflow
     mixing = false;
     loadingDiv.style.display = "none";
@@ -385,11 +388,11 @@ class ContainBox {
             let data_url = null;
             if (this.image && this.isDataURL) {
                 //load this.image to an extraCanvas
-                if(this.image.width > 5){
-                let extraCanvas = createGraphics(128, 128);
-                extraCanvas.image(this.image, 0, 0, 128, 128);
-                extraCanvas.loadPixels();
-                data_url = extraCanvas.canvas.toDataURL();
+                if (this.image.width > 5) {
+                    let extraCanvas = createGraphics(128, 128);
+                    extraCanvas.image(this.image, 0, 0, 128, 128);
+                    extraCanvas.loadPixels();
+                    data_url = extraCanvas.canvas.toDataURL();
                 }
                 // console.log(data_url);
             } else {
@@ -407,6 +410,12 @@ class ContainBox {
                 partycode: partyCode
             };
             console.log(data);
+
+            //emit if the socket is connected
+            while (!socket.connected) {
+                socket = io.connect();
+            }
+
             socket.emit("connection_name", data);
             console.log(this.name + "sent!");
             this.remove();

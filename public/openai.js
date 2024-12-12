@@ -1,4 +1,5 @@
 async function requestOAI(method, path, parametersOrCb, cb) {
+  console.log(cb,'this is cb');
     if (!openai_api_proxy) {
       throw "openai_api_proxy is not set";
     }
@@ -38,7 +39,13 @@ async function requestOAI(method, path, parametersOrCb, cb) {
     if (typeof parametersOrCb == 'function') {
       parametersOrCb(data);
     } else if (typeof cb == 'function') {
-      cb(data, parametersOrCb);
+      console.log(data,1);
+      cb(data, parametersOrCb).then(() => {
+        // Function to run after cb is executed
+        console.log('cb has been executed');
+      }).catch((error) => {
+        console.error('Error executing cb:', error);
+      });
     }
     return data;
   }
